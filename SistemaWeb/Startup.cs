@@ -37,7 +37,8 @@ namespace SistemaWeb
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             services.AddDbContext<SistemaWebContext>(options =>
-                    options.UseSqlServer(Configuration.GetConnectionString("SistemaWebContext")));
+                   options.UseMySql(Configuration.GetConnectionString("SistemaWebContext"), builder =>
+ builder.MigrationsAssembly("SistemaWeb")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
